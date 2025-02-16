@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="hide_product_cost" model="res.groups">
+            <field name="name">Hide Product Cost</field>
+        </record>
+
+        <record id="hide_sale_price" model="res.groups">
+            <field name="name">Hide Sale Price</field>
+        </record>
+
+    </data>
+</odoo>
