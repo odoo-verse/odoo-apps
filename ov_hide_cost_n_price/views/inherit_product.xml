@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
+        <record id="inherit_product_template_kanban" model="ir.ui.view">
+             <field name="name">inherit.product.template.kanban</field>
+             <field name="model">product.template</field>
+             <field name="inherit_id" ref="product.product_template_kanban_view"/>
+             <field name="arch" type="xml">
+
+                 <xpath expr="//div[@name='product_lst_price']" position="before">
+                    <field name="is_sale_price_hide" invisible="1"/>
+                 </xpath>
+
+                 <xpath expr="//div[@name='product_lst_price']" position="attributes">
+                     <attribute name="invisible">is_sale_price_hide</attribute>
+                 </xpath>
+
+             </field>
+        </record>
         <record id="inherit_product_template_form" model="ir.ui.view">
             <field name="name">inherit.product.template.form</field>
             <field name="model">product.template</field>
@@ -64,7 +80,7 @@
             </xpath>
 
             <xpath expr="//field[@name='lst_price']" position="attributes">
-                <attribute name="invisible">is_cost_hide</attribute>
+                <attribute name="invisible">is_sale_price_hide</attribute>
             </xpath>
 
         </field>
@@ -75,7 +91,7 @@
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='list_price']" position="before">
+            <xpath expr="//field[@name='lst_price']" position="before">
               <field name="is_sale_price_hide" invisible="1"/>
             </xpath>
 
@@ -90,22 +106,7 @@
         </field>
     </record>
 
-        <record id="inherit_product_template_kanban" model="ir.ui.view">
-             <field name="name">inherit.product.template.kanban</field>
-             <field name="model">product.template</field>
-             <field name="inherit_id" ref="product.product_template_kanban_view"/>
-             <field name="arch" type="xml">
 
-                 <xpath expr="//div[@name='product_lst_price']" position="before">
-                    <field name="is_sale_price_hide" invisible="1"/>
-                 </xpath>
-
-                 <xpath expr="//div[@name='product_lst_price']" position="attributes">
-                     <attribute name="invisible">is_sale_price_hide</attribute>
-                 </xpath>
-
-             </field>
-        </record>
     </data>
 
 </odoo>
